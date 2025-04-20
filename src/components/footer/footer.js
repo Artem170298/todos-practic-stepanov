@@ -25,7 +25,7 @@ export default class Footer extends Component {
   };
 
   render() {
-    const { notCompleted, Active, Completed, All, state, setStatusButton, deleteCompleted } = this.props;
+    const notCompleted, Active, Completed, All, state, setStatusButton, deleteCompleted } = this.props;
     return (
       <footer className="footer">
         <span className="todo-count">{notCompleted} items left</span>
