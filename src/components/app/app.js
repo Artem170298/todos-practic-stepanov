@@ -128,6 +128,10 @@ export default class App extends Component {
     const timeCreate = new Date();
     const time = timeCreate.getTime();
 
+    if (text === '') {
+      return;
+    }
+
     const newTask = {
       label: text,
       checked: false,
@@ -149,6 +153,13 @@ export default class App extends Component {
         return elem.id === id;
       });
 
+      if (label === '') {
+        const newArray = [...tasks];
+        newArray[idx].edit = false;
+        return {
+          tasks: newArray,
+        };
+      }
       const newArray = [...tasks];
 
       newArray[idx].label = label;
