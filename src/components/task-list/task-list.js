@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Task from '../task';
 import './task-list.css';
+import TaskUpdata from '../task-updata';
 
 export default class TaskList extends Component {
   // eslint-disable-next-line consistent-return, class-methods-use-this
@@ -30,25 +31,28 @@ export default class TaskList extends Component {
 
     const tasklist = filTasks.map((task) => {
       const { checked, edit } = task;
+      let taskString;
       let className = '';
       if (checked) {
         className += ' completed';
-      } else if (edit) {
-        className += ' editing';
       }
 
       return (
         <li key={task.id} className={className}>
-          <Task
-            label={task.label}
-            id={task.id}
-            onDeleted={() => onDeleted(task.id)}
-            onCheck={() => onCheck(task.id)}
-            state={state}
-            timer={task.timer}
-            openTheEditor={() => openTheEditor(task.id)}
-            updateTask={(label) => updateTask(task.id, label)}
-          />
+          {!edit ? (
+            <Task
+              label={task.label}
+              id={task.id}
+              onDeleted={() => onDeleted(task.id)}
+              onCheck={() => onCheck(task.id)}
+              state={state}
+              timer={task.timer}
+              openTheEditor={() => openTheEditor(task.id)}
+              // updateTask={(label) => updateTask(task.id, label)}
+            />
+          ) : null}
+
+          {edit ? <TaskUpdata label={task.label} updateTask={(label) => updateTask(task.id, label)} /> : null}
         </li>
       );
     });

@@ -53,19 +53,15 @@ export default class Task extends Component {
     return (
       <div>
         <input className="toggle" type="checkbox" checked={che} onChange={onCheck} />
+
         <label>
           <span className="description">{label}</span>
           <span className="created">
             <Timer timer={timer} />
           </span>
         </label>
-
         <button className="icon icon-edit" onClick={openTheEditor} />
-
         <button className="icon icon-destroy" onClick={onDeleted} />
-        <form onSubmit={this.onSubmit}>
-          <input type="text" className="edit" defaultValue={label} onChange={this.onLabelChange} />
-        </form>
       </div>
     );
   }
