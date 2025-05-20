@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Timer from '../timer';
-import './task.css';
+// import './task.css';
 
 export default class Task extends Component {
   state = {
@@ -55,8 +55,13 @@ export default class Task extends Component {
         <input className="toggle" type="checkbox" checked={che} onChange={onCheck} />
 
         <label>
-          <span className="description">{label}</span>
-          <span className="created">
+          <span className="description label">{label}</span>
+          <span className="description">
+            <button className="icon icon-play"></button>
+            <button className="icon icon-pause"></button>
+            <span>{tasks[idx].min}</span>:<span>{tasks[idx].sec}</span>
+          </span>
+          <span className="created description">
             <Timer timer={timer} />
           </span>
         </label>

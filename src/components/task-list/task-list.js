@@ -31,7 +31,7 @@ export default class TaskList extends Component {
 
     const tasklist = filTasks.map((task) => {
       const { checked, edit } = task;
-      let taskString;
+
       let className = '';
       if (checked) {
         className += ' completed';

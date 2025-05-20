@@ -4,7 +4,7 @@ import NewTaskForm from '../new-task-form';
 import Footer from '../footer';
 import TaskList from '../task-list';
 
-import './app.css';
+// import './app.css';
 
 export default class App extends Component {
   maxId = 100;
@@ -17,6 +17,8 @@ export default class App extends Component {
         id: 1,
         timer: 1420247100000,
         edit: false,
+        min: 0,
+        sec: 0,
       },
       {
         label: 'Completed task',
@@ -24,6 +26,8 @@ export default class App extends Component {
         id: 2,
         timer: 1420247100000,
         edit: false,
+        min: 0,
+        sec: 0,
       },
       {
         label: 'Completed task',
@@ -31,6 +35,8 @@ export default class App extends Component {
         id: 3,
         timer: 1420247100000,
         edit: false,
+        min: 0,
+        sec: 0,
       },
     ],
 
@@ -127,7 +133,7 @@ export default class App extends Component {
     });
   };
 
-  addTask = (text) => {
+  addTask = (text, min, sec) => {
     // создание новой задачи
     const timeCreate = new Date();
     const time = timeCreate.getTime();
@@ -141,6 +147,8 @@ export default class App extends Component {
       checked: false,
       id: this.maxId++,
       timer: time,
+      min,
+      sec,
     };
 
     this.setState(({ tasks }) => {
