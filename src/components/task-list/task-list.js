@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Task from '../task';
 import './task-list.css';
-import TaskUpdata from '../task-updata';
+import TaskUpdate from '../task-update';
 
 export default class TaskList extends Component {
   // eslint-disable-next-line consistent-return, class-methods-use-this
@@ -52,7 +52,9 @@ export default class TaskList extends Component {
             />
           ) : null}
 
-          {edit ? <TaskUpdata label={task.label} updateTask={(label) => updateTask(task.id, label)} /> : null}
+          {edit ? (
+            <TaskUpdate label={task.label} updateTask={(label) => updateTask(task.id, label)} id={task.id} />
+          ) : null}
         </li>
       );
     });

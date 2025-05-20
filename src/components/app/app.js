@@ -100,7 +100,11 @@ export default class App extends Component {
         return elem.id === id;
       });
       const newTasks = [...tasks];
-      newTasks[idx].edit = true;
+      if (newTasks[idx].checked) {
+        newTasks[idx].edit = false;
+      } else {
+        newTasks[idx].edit = true;
+      }
 
       return {
         tasks: newTasks,
