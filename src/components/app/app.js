@@ -35,8 +35,8 @@ export default class App extends Component {
         id: 3,
         timer: 1420247100000,
         edit: false,
-        min: 0,
-        sec: 0,
+        min: 3,
+        sec: 45,
       },
     ],
 

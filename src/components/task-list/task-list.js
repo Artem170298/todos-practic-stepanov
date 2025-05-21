@@ -48,6 +48,8 @@ export default class TaskList extends Component {
               state={state}
               timer={task.timer}
               openTheEditor={() => openTheEditor(task.id)}
+              minutes={task.min}
+              seconds={task.sec}
               // updateTask={(label) => updateTask(task.id, label)}
             />
           ) : null}

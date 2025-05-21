@@ -356,9 +356,10 @@ body {
 
 }
 
-.label {
+li label .label {
 	white-space: normal;
 	word-wrap: break-word;
+	font-size: 15px !important;
 }
 
 .todo-list li label .title {
