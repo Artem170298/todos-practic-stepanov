@@ -5,10 +5,17 @@ import Timer from '../timer';
 // import './task.css';
 
 export default class Task extends Component {
+  constructor(props) {
+    super(props);
+    this.timerId = React.createRef();
+    this.secondsRef = React.createRef(this.props.seconds);
+    this.minutesRef = React.createRef(this.props.minutes);
+  }
+
   state = {
     label: '',
-    seconds: this.props.seconds,
-    minutes: this.props.minutes,
+    seconds: this.secondsRef || this.props.seconds,
+    minutes: this.minutesRef || this.props.minutes,
   };
 
   // componentDidMount() {
@@ -71,9 +78,13 @@ export default class Task extends Component {
     } else if (minutes > 0 || seconds > 0) {
       this.dicrementTimer();
     }
+
+    console.log(this.secondsRef);
   };
 
   stopTimer = () => {
+    this.secondsRef = this.state.seconds;
+    this.minutesRef = this.state.minutes;
     clearInterval(this.timerId);
   };
 
@@ -128,7 +139,7 @@ export default class Task extends Component {
           <span className="description">
             <button
               className="icon icon-play"
-              onClick={() => this.startTimer(this.state.minutes, this.state.seconds)}
+              onClick={() => this.startTimer(this.props.minutes, this.props.seconds)}
             ></button>
             <button className="icon icon-pause" onClick={() => this.stopTimer()}></button>
             <span>{this.state.minutes}</span>:<span>{this.state.seconds}</span>
